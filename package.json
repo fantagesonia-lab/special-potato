@@ -1,0 +1,24 @@
+{
+  "name": "ribbonia",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ribbonia Online: a 2D browser social MMO / virtual world",
+  "type": "module",
+  "workspaces": ["shared", "server", "client"],
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c magenta,cyan \"npm:dev -w server\" \"npm:dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "test": "vitest run",
+    "typecheck": "tsc -p shared && tsc -p server && tsc -p client",
+    "render:sheet": "tsx scripts/render-sheet.ts",
+    "validate:assets": "tsx scripts/validate-assets.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0",
+    "@types/node": "^22.0.0"
+  }
+}
